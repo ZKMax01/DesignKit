@@ -1,5 +1,5 @@
 //
-//  ImputStyle.swift
+//  InputStyle.swift
 //  DesignKit
 //
 //  Created by ZKMax01 on 12/04/2025.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-private struct ImputStyleKey: EnvironmentKey {
-    static let defaultValue: ImputStyle = ImputStyle()
+private struct InputStyleKey: EnvironmentKey {
+    static let defaultValue: InputStyle = InputStyle()
 }
 
 // Create a custom structure for the style values
-public struct ImputStyle: @unchecked Sendable {
+public struct InputStyle: @unchecked Sendable {
+    let backgroundColor: Color
     let borderColor: Color
     let textColor: Color
     let placeholderColor: Color
@@ -24,15 +25,17 @@ public struct ImputStyle: @unchecked Sendable {
     
     // Provide an initializer to set all properties
     public init(
+        backgroundColor: Color = Color.App.Surface.xLow,
         borderColor: Color = Color.App.Content.OnNeutral.medium,
         textColor: Color = Color.App.Content.OnNeutral.xxHigh,
         placeholderColor: Color = Color.App.Content.OnNeutral.low,
         validationMessageColor: Color = Color.App.Content.OnNeutral.danger,
         font: Font = .App.Label.s,
         padding: CGFloat = Styling.spacingS,
-        borderWidth: CGFloat = Styling.borderWidthInput,
+        borderWidth: CGFloat = Styling.strokeL,
         cornerRadius: CGFloat = Styling.cornerRadiusInput
     ) {
+        self.backgroundColor = backgroundColor
         self.borderColor = borderColor
         self.textColor = textColor
         self.placeholderColor = placeholderColor
@@ -46,8 +49,8 @@ public struct ImputStyle: @unchecked Sendable {
 
 // Extend EnvironmentValues to access the style
 public extension EnvironmentValues {
-    var imputStyle: ImputStyle {
-        get { self[ImputStyleKey.self] }
-        set { self[ImputStyleKey.self] = newValue }
+    var inputStyle: InputStyle {
+        get { self[InputStyleKey.self] }
+        set { self[InputStyleKey.self] = newValue }
     }
 }

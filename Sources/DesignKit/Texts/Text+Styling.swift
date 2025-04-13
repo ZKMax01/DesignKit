@@ -43,7 +43,7 @@ public extension View {
     }
 }
 
-// MARK: Label Styles
+// MARK: Body Styles
 public extension View {
     func applyBodyMStyle() -> some View {
         self.applyStyle(

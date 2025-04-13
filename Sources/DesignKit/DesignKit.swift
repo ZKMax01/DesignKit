@@ -70,11 +70,11 @@ struct Preview: View {
                 Section(header: Text("Body Texts")) {
                     Text("Body M").applyLabelMStyle()
                 }
-                Section(header: Text("Imputs")) {
+                Section(header: Text("Inputs")) {
                     VStack(alignment: .leading) {
                         Text("Username")
                             .applyLabelSStyle()
-                        TextImput(
+                        TextInput(
                             text: $username,
                             placeholder: "Username"
                         )
@@ -82,7 +82,7 @@ struct Preview: View {
                     VStack(alignment: .leading) {
                         Text("Password")
                             .applyLabelSStyle()
-                        PasswordImput(
+                        PasswordInput(
                             text: $password,
                             placeholder: "Password",
                             passwordMinLength: 8,
@@ -98,8 +98,7 @@ struct Preview: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Preview()
-    }
+#Preview {
+    Preview()
 }
+

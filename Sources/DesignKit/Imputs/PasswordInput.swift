@@ -1,5 +1,5 @@
 //
-//  PasswordImput.swift
+//  PasswordInput.swift
 //  DesignKit
 //
 //  Created by ZKMax01 on 12/04/2025.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public struct PasswordImput: View {
-    @Environment(\.imputStyle) var imputStyle
+public struct PasswordInput: View {
+    @Environment(\.inputStyle) var inputStyle
     
     @Binding var text: String
     var placeholder: String
@@ -38,11 +38,14 @@ public struct PasswordImput: View {
     public var body: some View {
         VStack {
             SecureField(placeholder, text: $text)
-                .padding(imputStyle.padding)
-                .background(RoundedRectangle(cornerRadius: imputStyle.cornerRadius)
-                    .stroke(isValidPassword ? imputStyle.borderColor : imputStyle.validationMessageColor, lineWidth: imputStyle.borderWidth))
-                .foregroundColor(imputStyle.textColor)
-                .font(imputStyle.font)
+                .padding(inputStyle.padding)
+                .background(inputStyle.backgroundColor)
+                .overlay(
+                    RoundedRectangle(cornerRadius: inputStyle.cornerRadius)
+                                .stroke(isValidPassword ? inputStyle.borderColor : inputStyle.validationMessageColor, lineWidth: inputStyle.borderWidth)
+                )
+                .foregroundColor(inputStyle.textColor)
+                .font(inputStyle.font)
                 .onChange(of: text) { newValue in
                     // Check password validation as the text changes
                     validatePassword(password: newValue)
@@ -51,7 +54,7 @@ public struct PasswordImput: View {
             // Show validation message if password is invalid
             if !isValidPassword {
                 Text(errorMessage)
-                    .foregroundColor(imputStyle.validationMessageColor)
+                    .foregroundColor(inputStyle.validationMessageColor)
                     .font(.caption)
                     .padding([.top], 5)
             }
