@@ -23,7 +23,7 @@ public struct ImputStyle: @unchecked Sendable {
     let cornerRadius: CGFloat
     
     // Provide an initializer to set all properties
-    init(
+    public init(
         borderColor: Color = Color.App.Content.OnNeutral.medium,
         textColor: Color = Color.App.Content.OnNeutral.xxHigh,
         placeholderColor: Color = Color.App.Content.OnNeutral.low,
