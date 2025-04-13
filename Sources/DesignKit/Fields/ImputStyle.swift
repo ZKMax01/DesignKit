@@ -1,5 +1,5 @@
 //
-//  TextFieldStyle.swift
+//  ImputStyle.swift
 //  DesignKit
 //
 //  Created by ZKMax01 on 12/04/2025.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TextFieldStyleKey: EnvironmentKey {
-    static let defaultValue: TextFieldStyle = TextFieldStyle()
+private struct ImputStyleKey: EnvironmentKey {
+    static let defaultValue: ImputStyle = ImputStyle()
 }
 
 // Create a custom structure for the style values
-struct TextFieldStyle {
+public struct ImputStyle: @unchecked Sendable {
     let borderColor: Color
     let textColor: Color
     let placeholderColor: Color
@@ -45,9 +45,9 @@ struct TextFieldStyle {
 }
 
 // Extend EnvironmentValues to access the style
-extension EnvironmentValues {
-    var textFieldStyle: TextFieldStyle {
-        get { self[TextFieldStyleKey.self] }
-        set { self[TextFieldStyleKey.self] = newValue }
+public extension EnvironmentValues {
+    var imputStyle: ImputStyle {
+        get { self[ImputStyleKey.self] }
+        set { self[ImputStyleKey.self] = newValue }
     }
 }

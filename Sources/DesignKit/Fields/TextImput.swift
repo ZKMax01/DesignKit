@@ -1,18 +1,29 @@
 //
-//  SwiftUIView.swift
+//  TextImput.swift
 //  DesignKit
 //
-//  Created by ZKMax01 on 13/04/2025.
+//  Created by ZKMax01 on 12/04/2025.
 //
 
 import SwiftUI
 
-struct SwiftUIView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+public struct TextImput: View {
+    @Environment(\.imputStyle) private var imputStyle
+    
+    @Binding var text: String
+    var placeholder: String
 
-#Preview {
-    SwiftUIView()
+    public init(text: Binding<String>, placeholder: String) {
+        self._text = text
+        self.placeholder = placeholder
+    }
+
+    public var body: some View {
+        TextField(placeholder, text: $text)
+            .padding(imputStyle.padding)
+            .background(RoundedRectangle(cornerRadius: imputStyle.cornerRadius)
+                .stroke(imputStyle.borderColor, lineWidth: imputStyle.borderWidth))
+            .foregroundColor(imputStyle.textColor)
+            .font(imputStyle.font)
+    }
 }
