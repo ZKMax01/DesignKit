@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-private struct InputStyleKey: EnvironmentKey {
-    static let defaultValue: InputStyle = InputStyle()
+extension EnvironmentValues {
+    @Entry var inputStyle: InputStyle = InputStyle()
 }
 
 // Create a custom structure for the style values
@@ -44,13 +44,5 @@ public struct InputStyle: @unchecked Sendable {
         self.padding = padding
         self.borderWidth = borderWidth
         self.cornerRadius = cornerRadius
-    }
-}
-
-// Extend EnvironmentValues to access the style
-public extension EnvironmentValues {
-    var inputStyle: InputStyle {
-        get { self[InputStyleKey.self] }
-        set { self[InputStyleKey.self] = newValue }
     }
 }
